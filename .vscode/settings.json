@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.html": "html",
+        "iterator": "cpp",
+        "list": "cpp",
+        "memory": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "unordered_map": "cpp"
+    }
+}
