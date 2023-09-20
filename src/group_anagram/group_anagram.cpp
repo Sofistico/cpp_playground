@@ -22,14 +22,14 @@ std::string generateHash(const std::string& str) {
 
 std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs) {
     std::unordered_map<std::string, std::vector<std::string>> map;
-    std::vector<std::vector<std::string>> result;
 
-    for (const std::string& str : strs) {
-        std::string hash = generateHash(str);
-        map[hash].push_back(str);
+    for (auto w : strs) {
+        std::string str = w;
+        sort(str.begin(), str.end());
+        map[str].push_back(w);
     }
-
-    for (const auto& pair : map) {
+    std::vector<std::vector<std::string>> result;
+    for (auto pair : map) {
         result.push_back(pair.second);
     }
 
