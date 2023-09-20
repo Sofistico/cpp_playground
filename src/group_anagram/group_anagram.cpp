@@ -24,20 +24,18 @@ bool is_anagram(std::string s, std::string t) {
 std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs) {
     std::vector<std::vector<std::string>> result = {};
     std::unordered_map<std::string, std::vector<std::string>> map = {};
-    std::vector<std::string> seen = {};
     for (int i = 0; i < strs.size(); i++) {
-        std::string s = strs[i];
+        std::string s = std::string(strs[i]);
+        sort(s.begin(), s.end());
         if (map.find(s) != map.end()) {
             continue;
         }
-        map.insert({s, {s}});
-        seen.push_back(s);
-        for (int z = i + 1; z < strs.size() - 1; z++) {
+        map.insert({s, {strs[i]}});
+        for (int z = i + 1; z < strs.size(); z++) {
             std::string t = strs[z];
-            seen.push_back(t);
-            if(map.find(t) != map.end())
-                continue;
-            if (is_anagram(s, t)) {
+            // if (map.find(t) != map.end())
+            //     continue;
+            if (is_anagram(strs[i], t)) {
                 map[s].push_back(t);
             }
         }
@@ -47,8 +45,8 @@ std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& st
 }
 
 int main() {
-    std::vector<std::string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
-    std::vector<std::vector<std::string>> expected_output = {{"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"}};
+    std::vector<std::string> strs = {"eat","tea","tan","ate","nat","bat"};
+    std::vector<std::vector<std::string>> expected_output = {{"bat"},{"nat","tan"},{"ate","eat","tea"}};
     auto vec = groupAnagrams(strs);
     const char* res = vec == expected_output ? "equal" : "not equal";
     std::cout << res << std::endl;
