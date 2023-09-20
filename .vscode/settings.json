@@ -61,6 +61,9 @@
         "algorithm": "cpp",
         "map": "cpp",
         "optional": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "fstream": "cpp",
+        "string": "cpp",
+        "array": "cpp"
     }
 }

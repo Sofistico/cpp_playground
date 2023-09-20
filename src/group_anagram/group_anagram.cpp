@@ -16,10 +16,7 @@ std::string generateHash(const std::string& str) {
     for (char c : str) {
         count[c - 'a']++;
     }
-    std::string hash;
-    for (int i = 0; i < 26; i++) {
-        hash += std::to_string(count[i]) + "#";
-    }
+    std::string hash(count.begin(), count.end());
     return hash;
 }
 
@@ -52,7 +49,7 @@ int main() {
         }
     }
     
-    std::vector<std::vector<std::string>> expected_output = {{"bat"},{"nat","tan"},{"ate","eat","tea"}};
+    std::vector<std::vector<std::string>> expected_output = {{"nat","tan"}};
     auto vec = groupAnagrams(strs);
     const char* res = vec == expected_output ? "equal" : "not equal";
     std::cout << res << std::endl;
